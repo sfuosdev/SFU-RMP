@@ -1,11 +1,29 @@
 {
-  "name": "Getting Started Example",
-  "description": "Build an Extension!",
+  "name": "SFU RateMyProfessor Extension",
   "version": "1.0",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://sims.erp.sfu.ca/psp/csprd/EMPLOYEE/SA/c/*",
+        "https://myschedule.erp.sfu.ca/*"
+      ],
+      "css": ["style.css"],
+      "js": ["loader.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [ "src/*" ],
+      "matches": [ 
+        "https://sims.erp.sfu.ca/*",
+        "https://myschedule.erp.sfu.ca/*" 
+      ]
+    }
+  ],
   "permissions": ["storage", "activeTab", "scripting"],
   "action": {
     "default_popup": "popup.html",
