@@ -4,10 +4,19 @@ class Course extends HtmlModel {
     
     constructor(rawHtml) {
         super(rawHtml);
+        this.sections = this.parse(doc);
     }
 
-    validate(rawHtml) {
+    validate(doc) {
         // ...
+    }
+
+    parse(doc) {
+        // ...
+    }
+
+    getSessions() {
+        return this.sections;
     }
 }
 
