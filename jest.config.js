@@ -10,9 +10,9 @@ module.exports = {
       '\\.(css|less)$': '<rootDir>/__mocks__/fileMock.js',
     },
     testMatch: [
-      "<rootDir>/src/__tests__/*.(js|jsx|ts|tsx)",
+      "<rootDir>/src/__tests__/**/*.(js|jsx|ts|tsx)",
     ],
-    testEnvironment: 'jsdom',
+    testEnvironment: 'jest-environment-jsdom',
     testEnvironmentOptions: { "resources": "usable" },
     transformIgnorePatterns: ["<rootDir>/node_modules/"]
 };

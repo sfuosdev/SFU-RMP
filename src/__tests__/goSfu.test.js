@@ -25,7 +25,7 @@ describe("test DOM manipulation on class search", () => {
         // expect(elements.length).toBe(2);
 
         elements.forEach(element => {
-            // console.log(element.attributes);
+            // expect(elements.attributes["font-weight"]).toBe("bold")
         });
     });
 });
