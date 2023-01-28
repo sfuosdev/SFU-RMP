@@ -1,7 +1,8 @@
+import { JSDOM } from "jsdom";
+
 class HtmlModel {
     constructor(rawHtml) {
-        const jsdom = require("jsdom");
-        const doc = new jsdom.JSDOM(rawHtml).window.document;
+        const doc = new JSDOM(rawHtml).window.document;
         this.doc = doc;
         
         this.validate(doc);
