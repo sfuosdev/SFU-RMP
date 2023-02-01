@@ -1,3 +1,4 @@
+
 const updateInterval = 5000;
 
 function highlightClassSearchInstructorNames(node) {
