@@ -14,11 +14,11 @@ export async function retrieve(key) {
 export async function checkStorage(key) {
     var bool = false;
     const data = await chrome.storage.local.get(key);
-    if(Object.keys(data).length ==1){
-        bool= true
+    if(Object.keys(data).length ==0){
+        bool= false
     }
     else{
-        bool = false
+        bool = true
     }
     return bool
 }
