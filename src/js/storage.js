@@ -6,21 +6,20 @@ export function store(key, val) {
 
 }
 
-export function retrieve(key) {
-    const data =  await chrome.storage.local.get(key);
+export async function retrieve(key) {
+    const data = await chrome.storage.local.get(key);
     return data
 }
 
-export function checkStorage(key) {
-   const bool = true
-    chrome.storage.local.get(key, function (obj) {
-        if(Object.keys(obj).length==0){
-            bool = false
-        }
-        else{
-            bool = true
-        }
-    });
+export async function checkStorage(key) {
+    var bool = false;
+    const data = await chrome.storage.local.get(key);
+    if(Object.keys(data).length ==1){
+        bool= true
+    }
+    else{
+        bool = false
+    }
     return bool
 }
 
