@@ -8,9 +8,10 @@
   "content_scripts": [
     {
       "matches": [
-        "https://sims.erp.sfu.ca/psp/csprd/EMPLOYEE/SA/c/*",
+        "https://sims.erp.sfu.ca/*",
         "https://myschedule.erp.sfu.ca/*"
       ],
+      "all_frames": true,
       "css": ["style.css"],
       "js": ["loader.js"]
     }
