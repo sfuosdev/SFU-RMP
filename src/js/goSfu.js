@@ -26,7 +26,6 @@ function renderProfessorRatings() {
     console.log("rendering RMP rating on goSFU...");
 
     const iframe = document.getElementById('ptifrmtgtframe').contentWindow.document;
-    // highlightClassSearchInstructorNames(iframe);
     hoverTooltipOverInstructorNames(iframe);
 }
 
