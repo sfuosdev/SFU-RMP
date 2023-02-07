@@ -1,12 +1,22 @@
-![logo](./images/sfu_rmp_logo.png)
+<div id="header" align="center">
+  <h2>SFU Chrome Extension</h2>
+  <img src="./images/sfu_rmp_logo.png" width="400" height="400">
+</div>
+<br/>
 
-### SFU-RMP ###  
-
-## Installation  
-`npm install`
-
-## Test Extension in Development Mode    
-Clone the repository or download as a zip file.  
-Go to the extension page by entering `chrome://extensions/`.  
-Enable Developer Mode and Click the **Load unpacked** button to select the extension directory.  
+## Running in Development Mode    
+1. Clone or download the repository.  
+2. Enter the extension setting page and enable **Developer Mode**  
+3. Click the top left **Load unpacked** button and select the repository directory.  
+  
+## Running Test Suites  
+    
+<div>
+    <a href=".">
+      <img src="https://github.com/jiin-kim109/SFU-RMP/actions/workflows/node.js.yml/badge.svg"/>
+    </a>
+<div>    
+  
+1. `npm install` to download dev dependencies  
+2. `npm test` to run all test suites  
 
