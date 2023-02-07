@@ -9,7 +9,7 @@
 2. Enter the extension setting page and enable **Developer Mode**  
 3. Click the top left **Load unpacked** button and select the repository directory.  
   
-## Running Test Suites  
+## Running Tests  
     
 <div>
     <a href=".">
