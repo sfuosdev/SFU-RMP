@@ -1,3 +1,5 @@
+![logo](./images/sfu_rmp_logo.png)
+
 ### SFU-RMP ###  
 
 ## Installation  
