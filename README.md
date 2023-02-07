@@ -17,6 +17,6 @@
     </a>
 <div>    
   
-1. `npm install` to download dev dependencies  
+1. `npm install` to install dev dependencies  
 2. `npm test` to run all test suites  
 
