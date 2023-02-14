@@ -15,7 +15,7 @@ const config = {
  * Return all available course sessions for the current semester
  * @return Course[]
  */
-const getAllCourses = async () => {
+export const getAllCourses = async () => {
 
     const jsdom = require("jsdom");
 
@@ -25,6 +25,8 @@ const getAllCourses = async () => {
 
     const list = doc.querySelectorAll(".course-finder > ul > li > a");
     list.forEach(a => console.log(a.href));
+
+    return [];
 }
 
 /**
