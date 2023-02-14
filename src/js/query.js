@@ -31,7 +31,7 @@ const getAllCourses = async () => {
  * Return Professor ratings for a given professor name
  * @return RmpSearchResultCollection
  */
-const getRmpSearchResultCollection = async (professorName) => {
+export const getRmpSearchResultCollection = async (professorName) => {
 
     const query = "query=" + professorName;
     const sid = "sid=" + RMP_SFU_SID; 
@@ -47,5 +47,3 @@ const getRmpSearchResultCollection = async (professorName) => {
 export default {
     getRmpSearchResultCollection
 }
-
-getAllCourses();
