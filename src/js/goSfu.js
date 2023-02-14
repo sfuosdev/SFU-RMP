@@ -1,14 +1,5 @@
 const updateInterval = 5000;
 
-function highlightClassSearchInstructorNames(node) {
-    const instructorNames = node.querySelectorAll(`[id^=win0divMTG_INSTR] > span`);
-
-    instructorNames.forEach(element => {
-        element.style.fontWeight = "bold";
-        element.style.color = "blue";
-    });
-}
-
 function hoverTooltipOverInstructorNames(node) {
     const instructorNames = node.querySelectorAll(`[id^=win0divMTG_INSTR] > span`);
 
@@ -16,7 +7,6 @@ function hoverTooltipOverInstructorNames(node) {
         let instructorSpan = node.createElement("span");
         instructorSpan.className = "instructor";
         instructorSpan.innerText = element.innerText; // goSfu rejects innerHtml currently. Avoid using it.
-
         let boxSpan = node.createElement("span");
         boxSpan.className = "box";
         boxSpan.innerText = "RMP Data";
@@ -36,7 +26,6 @@ function renderProfessorRatings() {
     console.log("rendering RMP rating on goSFU...");
 
     const iframe = document.getElementById('ptifrmtgtframe').contentWindow.document;
-    highlightClassSearchInstructorNames(iframe);
     hoverTooltipOverInstructorNames(iframe);
 }
 
