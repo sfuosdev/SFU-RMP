@@ -61,20 +61,20 @@ describe("test rate my professor search result parsing to professor rating model
         expect(professorRatings[0].getNumOfRatings()).toBe(14);
         expect(professorRatings[0].getAverageQuality()).toBe(3.9);
         expect(professorRatings[0].getDifficulty()).toBe(2.6);
-        expect(professorRatings[0].getRetakeRatio()).toBe(NaN);
+        expect(professorRatings[0].getWouldLikeToTakeAgainRatio()).toBe(NaN);
 
         expect(professorRatings[1].getProfessorName()).toBe("Simin Najmi");
         expect(professorRatings[1].getDepartment()).toBe("Physics");
         expect(professorRatings[1].getNumOfRatings()).toBe(2);
         expect(professorRatings[1].getAverageQuality()).toBe(5.0);
         expect(professorRatings[1].getDifficulty()).toBe(1.5);
-        expect(professorRatings[1].getRetakeRatio()).toBe(NaN);
+        expect(professorRatings[1].getWouldLikeToTakeAgainRatio()).toBe(NaN);
 
         expect(professorRatings[2].getProfessorName()).toBe("Simin Bagheri Najmi");
         expect(professorRatings[2].getDepartment()).toBe("Physics");
         expect(professorRatings[2].getNumOfRatings()).toBe(16);
         expect(professorRatings[2].getAverageQuality()).toBe(3.8);
         expect(professorRatings[2].getDifficulty()).toBe(2.3);
-        expect(professorRatings[2].getRetakeRatio()).toBe(0.82);
+        expect(professorRatings[2].getWouldLikeToTakeAgainRatio()).toBe(0.82);
     })
 });
