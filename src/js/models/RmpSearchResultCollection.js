@@ -56,6 +56,16 @@ class RmpSearchResultCollection extends HtmlModel {
     getProfessorRatings() {
         return this.professorRatings;
     }
+
+    getFirstResult() {
+        if (!this.isEmpty())
+            return this.professorRatings[0];
+        throw new Error("Search result is empty");
+    }
+
+    isEmpty() {
+        return this.professorRatings.length ? false : true;
+    }
 }
 
 export default RmpSearchResultCollection;
