@@ -1,20 +1,27 @@
-class Session {
+class Section {
     
-    professorName;
-    section;
-
-    constructor(professorName, section) {
-        this.professorName = professorName;
+    constructor(program, courseNumber, section, professorName) {
+        this.program = program;
+        this.courseNumber = courseNumber;
         this.section = section;
+        this.professorName = professorName;
     }
 
-    getProfessorName() {
-        return this.professorName;
+    getProgram(){
+        return this.program;
+    }
+
+    getCourseNumber(){
+        return this.courseNumber;
     }
 
     getSection() {
         return this.section;
     }
+
+    getProfessorName() {
+        return this.professorName;
+    }
 }
 
-export default Session;
+export default Section;
