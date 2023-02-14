@@ -1,12 +1,8 @@
 
-const updateInt = 1000;
+const updateInt = 5000;
 
 function highlight(){
     let elementls = document.querySelectorAll('[title="Instructor(s)"]');
-    elementls.forEach(element => {
-        element.style.fontWeight = "bold";
-        element.style.color = "blue";
-        });
     for (let i = 0; i < elementls.length; i++){
         elementls[i].setAttribute('id','highlight'+[i]);
         let myDiv = document.getElementById('highlight'+[i]);
