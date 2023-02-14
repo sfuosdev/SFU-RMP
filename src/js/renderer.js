@@ -3,5 +3,5 @@ import mySchedule from "./mySchedule.js";
 
 export function render() {
     goSfu.render();
-    mySchedule.render();
+    //mySchedule.render();
 }

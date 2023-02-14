@@ -7,75 +7,31 @@
 .instructor {
     position: relative;
     margin: auto; 
-    font-weight: bold;      /* font weight of instructor's name */
-    color: blue;          /* color of instructor's name */
-}
-
-/* hover box properties */
-.box {
-    position: absolute;
+  }
+  
+.instructor .box {
     visibility: hidden;
-    width: 150px;               
-    height: 75px;                   /* hover box size */
-    padding: 20px;
-    background: #EEEEEE;          /* background colour of the hover box */
-    border-radius: 12px;            /* border radius */
-    border: #808080 solid 3px;    /* border colour and thickness */
-    z-index: 2;                     /* to be in front of the schedule in myschedule */
-    left: -160px;                   /* position of hover box */
-    top: -140px;
-    transition: opacity 0.25s ease-out, transform 0.25s ease-out;    /* first number: how fast it appears, 
-                                                                        second number: how fast it moves diagonally 
-                                                                        same number recommended */
-    opacity: 0;
-    transform: scale(0.95) translateY(1em) translateX(1em);          /* first number: how big the hoverbox starts
-                                                                        second and third number: how far it moves left and up */
-}
-/* hover box tail properties */
-.box:after {
-    content: '';
-    position: absolute;
-    border-style: solid;
-    border-width: 10px 10px 0;                  /* tail of the hover box 
-                                                   first number: length, second number width */
-    border-color: #EEEEEE transparent;        /* same colour as the background */
-    display: block;
-    width: 0;
-    z-index: 3;
-    bottom: -10px;            /* position of the tail */
-    left: 155px;
+
+    width: 150px;
+    height: 75px;
+    border-radius: 5px;
+
+    background-color: black;
+    color: #fff;
+
+    text-align: center;
     
-}
-/* hover box tail border properties */
-.box:before {
-    content: '';
-    position: absolute;
-    border-style: solid;
-    border-width: 12px 12px 0;        /* tail border (border-with of tail) + (border +- 1) */
-    border-color: #808080 transparent;
-    display: block;
-    width: 0;
-    z-index: 2;
-    bottom: -15px;            /* has to have a right porportion with position of the tail */
-    left: 153px;
-}
+    padding: 20px 0;
+    position: absolute;   
+    z-index: 5;
 
-.instructor:hover{
-    background-color: yellow;   /* highlight colour of instructor name when hover */
+    bottom: 120%; left: 5%;
 }
-
-/* shows hover box */
+  
 .instructor:hover .box {
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-    transition-duration: 0.3s, 0.8s;    /* speed of transition */
+    visibility: visible;      
 }
 
-/* only for myschedule */
-.reg_legend {
-    display: inline !important;
-}
-.timetable_part {
-    z-index: 1;
-}
+
+
+  
