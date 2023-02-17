@@ -24,8 +24,8 @@ function saveCache(key, rmpRating) {
 }
 
 /**
- * @returns ProfessorRating
- * @return undefined if professor name not found in SFU Academic Calander or RMP search result
+ * @returns {ProfessorRating}
+ * @return {undefined} if professor name not found in SFU Academic Calander or RMP search result
  */
 export async function getProfessorRating(program, courseNumber, section) {
     const courseData = await retrieve('courseData');
