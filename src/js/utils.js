@@ -41,5 +41,5 @@ export const promiseWindow = async (windowSize, iterable, promiseGenerator) => {
         pointer = pointer + windowSize;
         await Promise.all(items.map(item => promiseGenerator(item))).then(res => accumulator = [...accumulator, res]);
     }
-    return accumulator;
+    return accumulator.flat(Infinity);
 }
