@@ -1,18 +1,8 @@
 class Section {
     
-    constructor(program, courseNumber, section, professorName) {
-        this.program = program;
-        this.courseNumber = courseNumber;
+    constructor(section, professorName) {
         this.section = section;
         this.professorName = professorName;
-    }
-
-    getProgram(){
-        return this.program;
-    }
-
-    getCourseNumber(){
-        return this.courseNumber;
     }
 
     getSection() {

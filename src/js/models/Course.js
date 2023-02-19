@@ -1,52 +1,63 @@
-import HtmlModel from "./HtmlModel.js";
+import { createDOM } from "../utils.js";
 import Section from "./Section";
 
-class Course extends HtmlModel {
-    
+class Course {
+
     constructor(rawHtml) {
-        super(rawHtml);
-        this.sections = this.parse(this.doc);
+        this.sections = [];
+        this.program = '';
+        this.courseNumber = undefined;
+        this.validate(rawHtml);
+        this.parse(rawHtml);
     }
 
-    validate(doc) {
+    validate(rawHtml) {
+        const doc = createDOM(rawHtml);
         const courseWrapper = doc.querySelector("section.main");
         if(!courseWrapper)
             throw new Error("Invalid HTML");
         else{
-            courseWrapper.forEach(wrapper => {
-                [
-                    wrapper.querySelector("title"), // program // ".breadcrumb"
-                    wrapper.querySelector("title"), // course number
-                    // wrapper.querySelector(`[href^=http://www.sfu.ca/outlines.html]`), // section
-                    wrapper.querySelectorAll("td") // professor name & section // <td> name </td>
-
-                ].forEach(wrapper => {
-                    if (!wrapper)
-                        throw new Error("Invalid inner HTML");
-                })
+            const courseInfo = courseWrapper.querySelector("small.course_number").innerHTML.replace(/(\r\n|\n|\r)/gm, "").split("\t").filter(str => str != '');
+            [
+                courseInfo[0],
+                courseInfo[1]
+            ].forEach(element => {
+                if(!element)
+                    throw new Error("Invalid HTML")
+            });
+            const sections = courseWrapper.querySelectorAll("tr.main-section");
+            sections.forEach(section => {
+                if (section.querySelectorAll("td") < 4)
+                    throw new Error("Invalid HTML");
             });
         }
         return true;
     }
-    // program, courseNumber, section, professorName
 
-    parse(doc) {
+    parse(rawHtml) {
+        const doc = createDOM(rawHtml);
+        const courseWrapper = doc.querySelector("section.main");
+        const courseInfo = courseWrapper.querySelector("small.course_number").innerHTML.replace(/(\r\n|\n|\r)/gm, "").split("\t").filter(str => str != '');
+        this.program = courseInfo[0];
+        this.courseNumber = courseInfo[1];
+
         const sections = [];
-        
-        const sectionWrappers = doc.querySelectorAll("tr.main-section");
+        const sectionWrappers = courseWrapper.querySelectorAll("tr.main-section");
         sectionWrappers.forEach(wrapper => {
-            const program = wrapper.querySelector("title").innerHTML.split(" ")[0].trim(); // ex. CMPT
-            const courseNumber = wrapper.querySelector("title").innerHTML.split(" ")[1].trim(); // ex. 105W
-            // const section = wrapper.querySelector(`[href^=http://www.sfu.ca/outlines.html]`).innerHTML.trim(); // ex. E100
-            const section = wrapper.querySelectorAll("td").innerHTML.slice(0,1).trim();
-            // const professorName = wrapper.querySelector("td").innerHTML.replace(/"|'/g, '').replace(/\s+/g, ' ').trim(); // ex. Steven Ko
-            const professorName = wrapper.querySelectorAll("td").innerHTML.slice(1,2).trim();
-
-            const pairs = new Section(program, courseNumber, section, professorName);
-            sections.push(pairs);
+            const boxes = wrapper.querySelectorAll("td");
+            const section = boxes[0].querySelector("a").innerHTML.trim();
+            const professorName = boxes[1].textContent.trim();
+            sections.push(new Section(section, professorName));
         });
+        this.sections = sections;
+    }
 
-        return sections;
+    getProgram(){
+        return this.program;
+    }
+
+    getCourseNumber(){
+        return this.courseNumber;
     }
 
     getSections() {
