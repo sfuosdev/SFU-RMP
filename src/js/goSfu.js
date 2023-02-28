@@ -32,7 +32,7 @@ function renderProfessorRatings() {
     }
 }
 
-function render() {
+export function render() {
     renderProfessorRatings();
     setInterval(renderProfessorRatings, updateInterval);
 }

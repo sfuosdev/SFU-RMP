@@ -23,7 +23,8 @@ function highlight(){
         }
     }
 }
-function render() {
+
+export function render() {
     highlight();
     setInterval(highlight, updateInt);
 }
