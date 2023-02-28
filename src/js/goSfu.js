@@ -29,7 +29,7 @@ function renderProfessorRatings() {
     hoverTooltipOverInstructorNames(iframe);
 }
 
-export function render() {
+function render() {
     renderProfessorRatings();
     setInterval(renderProfessorRatings, updateInterval);
 }
