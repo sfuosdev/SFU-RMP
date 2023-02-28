@@ -1,4 +1,4 @@
-import { JSDOM } from "jsdom";
+import { store, retrieve } from "./storage.js";
 import { URL } from "url";
 import RmpSearchResultCollection from "./models/RmpSearchResultCollection.js";
 import Course from "./models/Course";
@@ -69,11 +69,11 @@ const collectCourseURLsFromProgramHTML = async (html) => {
     return uniqueUrls;
 }
 
+
 /**
-* Return all available courses in Academic Calender
-* @return {Course}[]
-*/
-export const getAllCourses = async () => {
+ * @param {(courses) => any | undefined} cb 
+ */
+export const collectAllCoursesFromAcademicCalender = async (cb) => {
     const academicCalander = await downloadHTMLFromURL(SFU_ACADEMIC_CALENDER_URL);
     const programUrls = await collectProgramURLsFromCalenderHTML(academicCalander);
 
@@ -99,6 +99,20 @@ export const getAllCourses = async () => {
         })
     ).then(urlSets => urlSets.flat(Infinity));
 
+    store('academic_calender', courses);
+    if(cb)
+        cb(courses);
+}
+
+/**
+* Return all available courses in Academic Calender
+* @return {Course}[]
+* @return undefined
+*/
+export const getAllCourses = () => {
+    const courses = retrieve('academic_calender');
+    if (courses == undefined || courses.length == 0)
+        return undefined;
     return courses;
 }
 
