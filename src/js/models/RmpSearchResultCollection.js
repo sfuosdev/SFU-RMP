@@ -1,16 +1,16 @@
-import HtmlModel from "./HtmlModel.js";
+import { createDOM } from "../utils.js";
 import ProfessorRating from "./ProfessorRating.js";
 
-
-
-class RmpSearchResultCollection extends HtmlModel {
+class RmpSearchResultCollection {
 
     constructor(rawHtml) {
-        super(rawHtml);
-        this.professorRatings = this.parse(this.doc);
+        this.professorRatings = [];
+        this.validate(rawHtml);
+        this.parse(rawHtml);
     }
 
-    validate(doc) {
+    validate(rawHtml) {
+        const doc = createDOM(rawHtml);
         const searchResultWrapper = doc.querySelectorAll(`[class^=TeacherCard__InfoRatingWrapper]`);
         if (!searchResultWrapper.length)
             throw new Error("Invalid HTML");
@@ -32,8 +32,8 @@ class RmpSearchResultCollection extends HtmlModel {
         return true;
     }
 
-    parse(doc) {
-        const professorRatings = [];
+    parse(rawHtml) {
+        const doc = createDOM(rawHtml);
 
         const ratingWrappers = doc.querySelectorAll(`[class^=TeacherCard__InfoRatingWrapper]`);
         ratingWrappers.forEach(wrapper => {
@@ -47,14 +47,22 @@ class RmpSearchResultCollection extends HtmlModel {
             const difficulty = parseFloat(feedbacks[1].innerHTML);
 
             const rating = new ProfessorRating(name, department, numOfRatings, quality, difficulty, retakeRatio);
-            professorRatings.push(rating);
+            this.professorRatings.push(rating);
         });
-
-        return professorRatings;
     }
 
     getProfessorRatings() {
         return this.professorRatings;
+    }
+
+    getFirstResult() {
+        if (!this.isEmpty())
+            return this.professorRatings[0];
+        throw new Error("Search result is empty");
+    }
+
+    isEmpty() {
+        return this.professorRatings.length ? false : true;
     }
 }
 

@@ -1,12 +1,12 @@
 class ProfessorRating {
 
-    constructor(professorName, department, numOfRatings, avgQuality, difficulty, retakeRatio) {
+    constructor(professorName, department, numOfRatings, avgQuality, difficulty, wouldLikeToTakeAgainRatio) {
         this.professorName = professorName;
         this.department = department;
         this.numOfRatings = numOfRatings;
         this.difficulty = difficulty;
         this.avgQuality = avgQuality;
-        this.retakeRatio = retakeRatio;
+        this.wouldLikeToTakeAgainRatio = wouldLikeToTakeAgainRatio;
     }
 
     getProfessorName() {
@@ -29,8 +29,8 @@ class ProfessorRating {
         return this.difficulty;
     }
 
-    getRetakeRatio() {
-        return this.retakeRatio;
+    getWouldLikeToTakeAgainRatio() {
+        return this.wouldLikeToTakeAgainRatio;
     }
 }
 

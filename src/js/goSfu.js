@@ -1,15 +1,5 @@
 const updateInterval = 5000;
 
-function highlightClassSearchInstructorNames(node) {
-    const instructorNames = node.querySelectorAll(`[id^=win0divMTG_INSTR], [id^=win0divDERIVED_REGFRM1_SSR_INSTR_LONG] > span`);
-
-    instructorNames.forEach(element => {
-        element.style.fontWeight = "bold";
-        element.style.color = "blue";
-    });
-}
-
-
 function hoverTooltipOverInstructorNames(node) {
     const instructorNames = node.querySelectorAll(`[id^=win0divMTG_INSTR], [id^=win0divDERIVED_REGFRM1_SSR_INSTR_LONG] > span`);
 
@@ -36,7 +26,6 @@ function hoverTooltipOverInstructorNames(node) {
 function renderProfessorRatings() {
 
     const iframe = document.getElementById('ptifrmtgtframe').contentWindow.document;
-    highlightClassSearchInstructorNames(iframe);
     hoverTooltipOverInstructorNames(iframe);
 }
 
