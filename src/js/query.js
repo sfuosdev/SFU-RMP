@@ -71,9 +71,9 @@ const collectCourseURLsFromProgramHTML = async (html) => {
 
 
 /**
- * @param {(courses) => any | undefined} cb 
+ * @return {Course}[]
  */
-export const collectAllCoursesFromAcademicCalender = async (cb) => {
+export const collectAllCoursesFromAcademicCalender = async () => {
     const academicCalander = await downloadHTMLFromURL(SFU_ACADEMIC_CALENDER_URL);
     const programUrls = await collectProgramURLsFromCalenderHTML(academicCalander);
 
@@ -100,19 +100,17 @@ export const collectAllCoursesFromAcademicCalender = async (cb) => {
     ).then(urlSets => urlSets.flat(Infinity));
 
     store('academic_calender', courses);
-    if(cb)
-        cb(courses);
+    return courses;
 }
 
 /**
 * Return all available courses in Academic Calender
 * @return {Course}[]
-* @return undefined
 */
 export const getAllCourses = () => {
     const courses = retrieve('academic_calender');
     if (courses == undefined || courses.length == 0)
-        return undefined;
+        return [];
     return courses;
 }
 
