@@ -1,9 +1,53 @@
-#changeColor {
-    width: 30px;
+/* popup */
+#wrapper {
+    width: 200px; /* your desired width */
+    height: 250px;
+    position: relative;
+}
+/* Collecting Data */
+.div1 {
+    width: 200px;
+    height: 100px; 
+    position: absolute;
+    padding: 70px 0;
+    text-align: center;
+}
+/* Last Update */
+.div2 {
+    width: 200px;
+    height: 100px; 
+    position: absolute;
+    padding: 60px 0;
+    text-align: center;
+}
+/* buttons */
+.btn-group button {
+    background-color: lightgray; /* lightgray background */
+    border: 1px solid black; /* black border */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    width: 100px;
     height: 30px;
-    background-color: red;
+}
+  
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+  
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+  
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: gray;
 }
 
+
+/* for Myschedule and GoSfu */
 .instructor {
     position: relative;
     margin: auto; 
