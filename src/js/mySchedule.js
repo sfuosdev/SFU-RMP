@@ -23,9 +23,9 @@ function highlight(){
         }
     }
 }
-function render() {
-    highlight()
-    console.log("rendering RMP rating on mySchedule...");
+
+export function render() {
+    highlight();
     setInterval(highlight, updateInt);
 }
 
