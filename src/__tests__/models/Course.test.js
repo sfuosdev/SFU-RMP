@@ -15,8 +15,6 @@ describe("test course detail search result html validation", () => {
             '  </h1>'+
             '  <p>'+
             '  </p>'+
-            '  <div class="below-main inherited parsys">'+
-            '  </div>'+
             '</section>';
             new Course(html);
         };
@@ -24,10 +22,35 @@ describe("test course detail search result html validation", () => {
         expect(fn).toThrow("Invalid HTML");
     });
 
+    test("should return true when html contains required content wrapper(sections not provided)", () => {
+        const fn =() => {
+            const html =
+            '<section class="main">'+
+            '  <div class="above-main inherited-parsys">'+
+            '  </div>'+
+            '  <h1>'+
+            '  </h1>'+
+            '  <p>'+
+            '  </p>'+
+            '  <div class="below-main inherited parsys">'+
+            '  </div>'+
+            '</section>';
+            new Course(html);
+        };
+        expect(fn).not.toThrow(Error);
+    });
+
     test("should return true when html contains required content wrapper", () => {
         const fn =() => {
             const html =
             '<section class="main">'+
+            '  <div class="above-main inherited-parsys">'+
+            '  </div>'+
+            '  <h1>'+
+            '  </h1>'+
+            '  <p>'+
+            '  </p>'+
+            '  <div class="four-columns course-sections">'+
             '  <small class="course_number"> CMPT 300 (3) </small>'+
             '  <tr class="main-section">'+
             '    <td>'+
@@ -38,6 +61,7 @@ describe("test course detail search result html validation", () => {
             '        <br>'+
             '    </td>'+
             '  </tr>'+
+            '  </div>'+
             '</section>';
             new Course(html);
         };
