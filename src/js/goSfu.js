@@ -25,8 +25,11 @@ function hoverTooltipOverInstructorNames(node) {
 
 function renderProfessorRatings() {
 
-    const iframe = document.getElementById('ptifrmtgtframe').contentWindow.document;
-    hoverTooltipOverInstructorNames(iframe);
+    const iframeElement = document.querySelector('iframe#ptifrmtgtframe');
+    if (iframeElement) {
+        const iframe = iframeElement.contentWindow.document;
+        hoverTooltipOverInstructorNames(iframe);
+    }
 }
 
 function render() {
