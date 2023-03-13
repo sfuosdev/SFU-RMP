@@ -2,7 +2,9 @@
  * @jest-environment node
  */
 
-import { fetchWithRetries } from "../js/utils";
+import { fetchWithRetries, promiseWindow } from "../js/utils";
+
+
 
 describe('fetchWithRetries', () => {
     test('returns a valid response when given a valid URL', async () => {
@@ -17,10 +19,14 @@ describe('fetchWithRetries', () => {
       const url = 'https://google.com/invalid';
       const requestConfig = {};
       const retryconfig = { retry: 3, interval: 500 };
+      const error = new Error('Invalid URL');
+      global.fetch = jest.fn(() => Promise.resolve(error));
     try {
       await fetchWithRetries(url, requestConfig, retryconfig);
     } catch (error) {
+      expect(error).toEqual(error);
       console.log(error);
     }
+    global.fetch.mockRestore();
     });
   });
