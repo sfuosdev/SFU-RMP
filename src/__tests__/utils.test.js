@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 
-import { fetchWithRetries, promiseWindow } from "../js/utils";
+import { fetchWithRetries } from "../js/utils";
 
 
 
