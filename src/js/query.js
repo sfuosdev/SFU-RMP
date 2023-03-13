@@ -5,7 +5,7 @@ import Course from "./models/Course";
 import { createDOM, fetchWithRetries, promiseWindow, PROMISE_WINDOW_SIZE } from "./utils";
 
 const SFU_BASE_URL = "https://www.sfu.ca";
-const SFU_ACADEMIC_CALENDER_URL = "https://www.sfu.ca/students/calendar/2023/spring/courses.html";
+const SFU_ACADEMIC_CALENDER_URL = dynamicAcademicCalenderURL();
 const RMP_SEARCH_BASE_URL = "https://www.ratemyprofessors.com/search/teachers";
 const RMP_SFU_SID = "U2Nob29sLTE0ODI=";
 
@@ -16,6 +16,24 @@ const createRequestHeader = (config) => {
         },
         ...config
     }
+}
+const dynamicAcademicCalenderURL = ()=>{
+    var current = new Date()
+    var month = current.getMonth()
+    var year = current.getFullYear()
+    var sem = "fall"
+    if(month>=1 && month <5){
+        sem = "summer"
+    }
+    else if(month>=5 && month <9){
+        sem = "fall"
+    }
+    else{
+        sem = "spring"
+    }
+    const res = "https://www.sfu.ca/students/calendar/"+year+"/"+sem+"/courses.html"
+    return res
+
 }
     
 const isValidUrl = (string) => {
