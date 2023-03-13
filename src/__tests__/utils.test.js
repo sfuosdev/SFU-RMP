@@ -14,5 +14,6 @@ describe('fetchWithRetries', () => {
       const requestConfig = {};
       const retryconfig = { retry: 3, interval: 500 };
       await expect(fetchWithRetries(url, requestConfig, retryconfig)).rejects.toThrow();
+      
     });
   });
