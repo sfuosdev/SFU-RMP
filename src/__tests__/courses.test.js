@@ -1,7 +1,7 @@
 /**
  * @jest-environment node
  */
- import { when } from 'jest-when'
+import { when } from 'jest-when'
 import {collect,getCourseData } from "../js/courses";
 import { store, retrieve, checkStorage } from "../js/storage";
 import { getRmpSearchResultCollection, getAllCourses } from "../js/query";
