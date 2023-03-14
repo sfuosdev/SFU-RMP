@@ -12,6 +12,17 @@
 //   }
 // );
 
+
+// Send a message to the background script to request the current status
+chrome.runtime.sendMessage({ getStatus: true }, (response) => {
+  const statusDiv = document.getElementById("status");
+  if (response.status === "loading") {
+    statusDiv.textContent = "Loading...";
+  } else if (response.status === "completed") {
+    statusDiv.textContent = "Completed!";
+  }
+});
+
 // Query control button
 let status_one = document.getElementById("status_one");
 let status_two = document.getElementById("status_two");
@@ -22,16 +33,30 @@ let dateString = new Date().toDateString();
 
 // When the button is clicked, inject text element
 status_one.addEventListener("click", async () => {
+
+  // Show the loading animation
+  const loadingDiv = document.getElementById("loading");
+  loadingDiv.style.display = "inline-block";
+ 
+  // Send a message to the background script to request the completed message
+  if (document.getElementById("status").innerHTML === "Completed!") {
+    loadingDiv.style.display = "none";
+  }
+
   wrapper.innerHTML = "";
   const divOne = document.createElement("div")
   divOne.className = "div1";
   const data = document.createElement("h3");
   wrapper.appendChild(divOne);
   divOne.appendChild(data);
-  data.innerText = "Collecting Data...";
+  data.innerText = document.getElementById("status").innerHTML;
 });
 
 status_two.addEventListener("click", async () => {
+  //Hide animation
+  const loadingDiv = document.getElementById("loading");
+  loadingDiv.style.display = "none";
+
   wrapper.innerHTML = "";
   const divOne = document.createElement("div")
   divOne.className = "div2";
