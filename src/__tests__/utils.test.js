@@ -4,7 +4,7 @@
 
 import { fetchWithRetries } from "../js/utils";
 
-
+global.fetch = jest.fn(() => Promise.resolve({ ok: true }));
 
 describe('fetchWithRetries', () => {
     test('returns a valid response when given a valid URL', async () => {
@@ -20,7 +20,7 @@ describe('fetchWithRetries', () => {
       const requestConfig = {};
       const retryconfig = { retry: 3, interval: 500 };
       const error = new Error('Invalid URL');
-      global.fetch = jest.fn(() => Promise.resolve(error));
+      global.fetch = jest.fn(() => Promise.reject(error));
     try {
       await fetchWithRetries(url, requestConfig, retryconfig);
     } catch (error) {
