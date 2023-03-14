@@ -10,7 +10,7 @@ describe("test course detail search result html validation", () => {
             const html =
             '<section class="main">'+
             '  <div class="above-main inherited-parsys">'+
-            '  </div>'+
+            '  </div>'+ 
             '  <h1>'+
             '  </h1>'+
             '  <p>'+
@@ -20,6 +20,7 @@ describe("test course detail search result html validation", () => {
         };
         expect(fn).toThrow(Error);
         expect(fn).toThrow("Invalid HTML");
+
     });
 
     test("should return true when html contains required content wrapper(sections not provided)", () => {
@@ -40,7 +41,7 @@ describe("test course detail search result html validation", () => {
         expect(fn).not.toThrow(Error);
     });
 
-    test("should return true when html contains required content wrapper", () => {
+    test("should not throw error when html contains required content wrapper", () => {
         const fn =() => {
             const html =
             '<section class="main">'+
@@ -90,8 +91,8 @@ describe("test course detail search result parsing to course detail models", () 
         const program = course.getProgram();
         const courseNumber = course.getCourseNumber();
 
-        expect(program.getProgram()).toBe("CMPT");
-        expect(courseNumber.getCourseNumber()).toBe("300");
+        expect(program.program).toBe("CMPT");
+        expect(courseNumber.courseNumber).toBe("300");
 
         expect(sections[0].getSection()).toBe("D100");
         expect(sections[0].getProfessorName()).toBe("Steven Ko");
