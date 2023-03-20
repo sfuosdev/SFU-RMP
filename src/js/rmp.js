@@ -1,6 +1,6 @@
-import ProfessorRating from "./models/ProfessorRating";
-import { store, retrieve } from "./storage";
-import { getRmpSearchResultCollection } from "./query";
+import ProfessorRating from "./models/ProfessorRating.js";
+import { store, retrieve } from "./storage.js";
+import { getRmpSearchResultCollection } from "./query.js";
 
 function serializeCacheKey(program, courseNumber, section, profressorName) {
     return program + courseNumber + "-" + section + "-" + profressorName;
