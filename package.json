@@ -1,0 +1,38 @@
+{
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "babel-jest": "^29.3.1",
+    "jest": "^29.4.3",
+    "jest-environment-jsdom": "^29.3.1",
+    "jest-when": "^3.5.2",
+    "jsdom": "^21.1.1"
+  },
+  "babel": {
+    "presets": [
+      "@babel/env"
+    ]
+  },
+  "name": "sfu-rmp",
+  "description": "<div id=\"header\" align=\"center\">   <h2>SFU Chrome Extension</h2>   <img src=\"./images/sfu_rmp_logo.png\" width=\"400\" height=\"400\"> </div> <br/>",
+  "version": "1.0.0",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiin-kim109/SFU-RMP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jiin-kim109/SFU-RMP/issues"
+  },
+  "homepage": "https://github.com/jiin-kim109/SFU-RMP#readme",
+  "dependencies": {
+    "babelify": "^10.0.0"
+  }
+}

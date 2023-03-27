@@ -1,0 +1,309 @@
+/* popup */
+.popup_wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 200px;
+}
+
+.popup_wrapper .popup_wrapper__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.popup_wrapper_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.extension_ready {
+    display: none;
+}
+
+.btn {
+    position: relative;
+    display: block;
+    margin: 15px auto;
+    padding: 0;
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    background-color: #3498db;
+    color: #ecf0f1;
+    transition: background-color .3s;
+}
+
+.btn:hover, .btn:focus {
+    background-color:dodgerblue;
+}
+  
+.btn > * {
+  position: relative;
+}
+
+.btn span {
+  display: block;
+  padding: 8px 24px;
+  font-weight: bold;
+  font-size: small;
+}
+
+.btn:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 0;
+  padding-top: 0;
+  border-radius: 100%;
+  background-color: rgba(236, 240, 241, .3);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.btn:active:before {
+  width: 120%;
+  padding-top: 120%;
+  transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+.warn,
+.warn::before,
+.warn::after
+{
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.warn {
+  font-size: 36px;
+  color: transparent;
+}
+
+.warn.warning {
+  display: inline-block;
+  top: 0.225em;
+  width: 1.15em;
+  height: 1.15em;
+  overflow: hidden;
+  border: none;
+  background-color: transparent;
+  border-radius: 0.625em;
+}
+
+.warn.warning::before {
+  content: "";
+  display: block;
+  top: -0.08em;
+  left: 0.0em;
+  position: absolute;
+  border: transparent 0.6em solid;
+  border-bottom-color: #fd3;
+  border-bottom-width: 1em;
+  border-top-width: 0;
+  box-shadow: #999 0 1px 1px;
+}
+
+.warn.warning::after {
+  display: block;
+  position: absolute;
+  top: 0.15em;
+  left: 0;
+  width: 100%;
+  padding: 0 1px;
+  text-align: center;
+  font-family: "Garamond";
+  content: "!";
+  font-size: 0.65em;
+  font-weight: bold;
+  color: #333;
+}
+
+.tick-mark {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+
+.tick-mark::before {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 50%;
+    width: 3px;
+    background-color: greenyellow;
+    content: "";
+    transform: translateX(10px) rotate(-45deg);
+    transform-origin: left bottom;
+}
+
+.tick-mark::after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: greenyellow;
+    content: "";
+    transform: translateX(10px) rotate(-45deg);
+    transform-origin: left bottom;
+}
+
+/* 
+*  GoSFU and MySchedule
+*/
+/* for Myschedule and GoSfu */
+.rmp_instructor_wrapper {
+    position: relative;
+    margin: auto; 
+    font-weight: bold;      /* font weight of instructor's name */
+    text-decoration: underline;
+    color: #3498db;          /* color of instructor's name */
+}
+
+.rmp_instructor_wrapper:hover{
+    background-color: yellow;   /* highlight colour of instructor name when hover */
+}
+
+/* shows hover box */
+.rmp_instructor_wrapper:hover .rating_box_wrapper {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition-duration: 0.1s, 0.4s;    /* speed of transition */
+}
+
+/* hover box properties */
+.rating_box_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-width: 150px;
+    position: absolute;
+    text-align: left;
+    color: black;
+    visibility: hidden;    
+    padding: 10px;
+    background: #EEEEEE;          /* background colour of the hover box */
+    border-radius: 12px;            /* border radius */
+    border: #808080 solid 3px;    /* border colour and thickness */
+    z-index: 999;                     /* to be in front of the schedule in myschedule */
+    left: -160px;                   /* position of hover box */
+    top: -155px;
+    transition: opacity 0.25s ease-out, transform 0.25s ease-out;    /* first number: how fast it appears, 
+                                                                        second number: how fast it moves diagonally 
+                                                                        same number recommended */
+    opacity: 0;
+    transform: scale(0.95) translateY(1em) translateX(1em);          /* first number: how big the hoverbox starts 
+                                                                        second and third number: how far it moves left and up */
+}
+
+/* hover box tail properties */
+.rating_box_wrapper:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 10px 10px 0;                  /* tail of the hover box 
+                                                   first number: length, second number width */
+    border-color: #EEEEEE transparent;        /* same colour as the background */
+    display: block;
+    width: 0;
+    z-index: 3;
+    bottom: -10px;            /* position of the tail */
+    left: 155px;
+    
+}
+
+/* hover box tail border properties */
+.rating_box_wrapper:before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 12px 12px 0;        /* tail border (border-with of tail) + (border +- 1) */
+    border-color: #808080 transparent;
+    display: block;
+    width: 0;
+    z-index: 2;
+    bottom: -15px;            /* has to have a right porportion with position of the tail */
+    left: 153px;
+}
+
+.rating_item_wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 10px;
+}
+
+.rating_item_wrapper h3 {
+    text-decoration: underline;
+    text-align: center;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+.rating_item_wrapper p {
+    margin: 1px 0px;
+    font-weight: lighter;
+}
+
+.rating_item_wrapper b {
+    font-weight: bolder;
+    font-size: medium;
+}
+
+.rating_item_wrapper hr {
+    margin: 3px 0px;
+}
+
+/* Loading Screen */
+#logo {
+    width: 300px;
+    height: 300px;
+}
+
+.loading_wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top: 120px;
+}
+
+.loading_warning_header {
+    padding: 20px 0px 0px 0px;
+}
+
+.loading_header {
+    padding: 10px 0px 0px 0px;
+}
+
+#spinner {
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #3498db;
+    width: 75px;
+    height: 75px;
+    animation: spin 1s linear infinite;
+}
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+}

@@ -1,24 +1,28 @@
-// Initialize button with user's preferred color
-let changeColor = document.getElementById("changeColor");
 
-chrome.storage.sync.get("color", ({ color }) => {
-  changeColor.style.backgroundColor = color;
+/**
+ * Check if initial setup is required in background service worker
+ */
+chrome.runtime.sendMessage({ type: "popup_message", key: "isBackgroundTaskRequired", message: null}, (response) => {
+  console.log(response.message);
+  if (response.message) showExtensionNotReady();
+  else showExtensionReady();
 });
 
-// When the button is clicked, inject setPageBackgroundColor into current page
-changeColor.addEventListener("click", async () => {
-  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    func: setPageBackgroundColor,
-  });
-});
-
-// The body of this function will be executed as a content script inside the
-// current page
-function setPageBackgroundColor() {
-  chrome.storage.sync.get("color", ({ color }) => {
-    document.body.style.backgroundColor = color;
-  });
+function showExtensionReady() {
+  const elesToShow = document.querySelectorAll(".extension_ready");
+  const elesToHide = document.querySelectorAll(".extension_not_ready");
+  elesToShow.forEach(ele => ele.style.display = "flex");
+  elesToHide.forEach(ele => ele.style.display = "none");
 }
+
+function showExtensionNotReady() {
+  const elesToShow = document.querySelectorAll(".extension_not_ready");
+  const elesToHide = document.querySelectorAll(".extension_ready");
+  elesToShow.forEach(ele => ele.style.display = "flex");
+  elesToHide.forEach(ele => ele.style.display = "none");
+}
+
+const updateBtns = document.querySelectorAll("#extensionResetBtn");
+updateBtns.forEach(btn => btn.addEventListener("click", () => {
+  chrome.runtime.sendMessage({ type: "popup_message", key: "resetExtension", message: null});
+}));

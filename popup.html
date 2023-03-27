@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="button.css">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <button id="changeColor"></button>
+    <div class="popup_wrapper">
+      <div class="popup_wrapper__header">
+        <h2>SFU 2000 Summer</h2>
+      </div>
+      <div class="popup_wrapper_content extension_not_ready">
+          <div>
+            <span class="warn warning"></span>
+          </div>
+          <div class="popup_wrapper_content__textfield">
+            <h3>Extension Update Required</h3>
+          </div>
+      </div>
+      <div class="popup_wrapper_content extension_ready">
+        <div>
+          <div class="tick-mark"></span>
+          </div>
+          <div class="popup_wrapper_content__textfield">
+            <h3>Extension is enabled</h3>
+          </div>
+        </div>
+      </div>
+      <div class="popup_wrapper__buttons">
+        <div class="extension_not_ready">
+          <button id="extensionResetBtn" class="btn"><span>Update</span></button>
+        </div>
+        <div class="extension_ready">
+          <button id="extensionResetBtn" class="btn"><span>Re-update</span></button>
+        </div>
+      </div>
+    </div>
     <script src="popup.js"></script>
   </body>
 </html>
