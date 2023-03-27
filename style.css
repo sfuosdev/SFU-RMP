@@ -6,7 +6,7 @@
     width: 200px;
 }
 
-.popup_wrapper .popup_wrapper__header {
+.popup_wrapper .popup_wrapper_header {
     display: flex;
     justify-content: center;
     align-items: center;
