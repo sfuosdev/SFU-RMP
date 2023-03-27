@@ -1,5 +1,5 @@
 import Message from "./models/Message.js";
-import { checkCourseListPresentInStorage, checkProfessorRatingDictionaryPresentInStorage, invalidateStorageData, saveCourseListInLocalStorage, saveProfessorRatingDictionary } from "./storage.js";
+import { checkCourseListPresentInStorage, checkProfessorRatingDictionaryPresentInStorage, saveCourseListInLocalStorage, saveProfessorRatingDictionary } from "./storage.js";
 import { createRequestHeader, downloadHTMLFromURL } from "./web/utils.js";
 
 async function isInitialSetupRequired() {
