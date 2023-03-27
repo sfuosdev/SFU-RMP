@@ -1,17 +1,32 @@
-class Section {
+export default class Section {
     
-    constructor(section, professorName) {
+    constructor(section, professors) {
         this.section = section;
-        this.professorName = professorName;
+        this.professors = professors;
     }
 
+    /**
+     * 
+     * @returns {String} section code
+     */
     getSection() {
         return this.section;
     }
 
-    getProfessorName() {
-        return this.professorName;
+    /**
+     * @returns {String[]} names of assigned professors
+     */
+    getProfessors() {
+        return this.professors;
+    }
+
+    /**
+     * @returns {String} name of primary professor
+     */
+    getPrimaryProfessor() {
+        if (this.professors.length > 0)
+            return this.professors[0];
+        else
+            return null;
     }
 }
-
-export default Section;

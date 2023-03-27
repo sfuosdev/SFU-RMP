@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1 id="current_semester">2000 Spring</h1>
+        <div class="loading_wrapper">
+            <img id="logo" src="./images/sfu_rmp_logo.png" />
+            <h1 class="loading_warning_header">Please do not close this window until processing completes</h1>
+            <h3 id="progressHeaderText" class="loading_header"></h2>
+            <div id="hide_on_finish">
+                <div id="spinner"></div>
+                <h3 id="progressNumeric">(0/0)</h3>
+                <p id="progressText"></p>
+            </div>
+            <div id="show_on_finish" style="display:none">
+                <h2>Done!</h2>
+            </div>
+        </div>
+
+        <script src="./src/js/loading.js" type="module"></script>
+        <script>
+        </script>
+    </body>
+</html>

@@ -1,90 +1,28 @@
-// export const logMessage = (message) => {
-//   chrome.runtime.sendMessage({
-//       target: "popup", 
-//       message: message
-//   });
-// }
-// chrome.runtime.onMessage.addListener(
-//   function(request, sender, sendResponse) {
-//       if (request.target === "popup") {
-//           //  show received log message on popup
-//       }
-//   }
-// );
 
-
-// Send a message to the background script to request the current status
-chrome.runtime.sendMessage({ getStatus: true }, (response) => {
-  const statusDiv = document.getElementById("status");
-  if (response.status === "loading") {
-    statusDiv.textContent = "Loading...";
-  } else if (response.status === "completed") {
-    statusDiv.textContent = "Completed!";
-  }
+/**
+ * Check if initial setup is required in background service worker
+ */
+chrome.runtime.sendMessage({ type: "popup_message", key: "isBackgroundTaskRequired", message: null}, (response) => {
+  console.log(response.message);
+  if (response.message) showExtensionNotReady();
+  else showExtensionReady();
 });
 
-// Query control button
-let status_one = document.getElementById("status_one");
-let status_two = document.getElementById("status_two");
-
-const wrapper = document.getElementById("wrapper");
-let timeString = new Date().toLocaleTimeString();
-let dateString = new Date().toDateString();
-
-// When the button is clicked, inject text element
-status_one.addEventListener("click", async () => {
-
-  // Show the loading animation
-  const loadingDiv = document.getElementById("loading");
-  loadingDiv.style.display = "inline-block";
- 
-  // Send a message to the background script to request the completed message
-  if (document.getElementById("status").innerHTML === "Completed!") {
-    loadingDiv.style.display = "none";
-  }
-
-  wrapper.innerHTML = "";
-  const divOne = document.createElement("div")
-  divOne.className = "div1";
-  const data = document.createElement("h3");
-  wrapper.appendChild(divOne);
-  divOne.appendChild(data);
-  data.innerText = document.getElementById("status").innerHTML;
-});
-
-status_two.addEventListener("click", async () => {
-  //Hide animation
-  const loadingDiv = document.getElementById("loading");
-  loadingDiv.style.display = "none";
-
-  wrapper.innerHTML = "";
-  const divOne = document.createElement("div")
-  divOne.className = "div2";
-  const update = document.createElement("h3");
-  update.innerText = "Last Update:";
-  const time = document.createElement("h2");
-  time.innerText = timeString;
-  const date = document.createElement("p");
-  date.innerText = dateString;
-  wrapper.appendChild(divOne);
-  divOne.appendChild(update);
-  divOne.appendChild(time);
-  divOne.appendChild(date);
-});
-
-/*
-// To access current page, not popup
-changeColor.addEventListener("click", async () => {
-  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    func: setPageBackgroundColor,
-  });
-});
-
-function setPageBackgroundColor() {
-  chrome.storage.sync.get("color", ({ color }) => {
-    document.body.style.backgroundColor = color;
-  });
+function showExtensionReady() {
+  const elesToShow = document.querySelectorAll(".extension_ready");
+  const elesToHide = document.querySelectorAll(".extension_not_ready");
+  elesToShow.forEach(ele => ele.style.display = "flex");
+  elesToHide.forEach(ele => ele.style.display = "none");
 }
-*/
+
+function showExtensionNotReady() {
+  const elesToShow = document.querySelectorAll(".extension_not_ready");
+  const elesToHide = document.querySelectorAll(".extension_ready");
+  elesToShow.forEach(ele => ele.style.display = "flex");
+  elesToHide.forEach(ele => ele.style.display = "none");
+}
+
+const updateBtns = document.querySelectorAll("#extensionResetBtn");
+updateBtns.forEach(btn => btn.addEventListener("click", () => {
+  chrome.runtime.sendMessage({ type: "popup_message", key: "resetExtension", message: null});
+}));

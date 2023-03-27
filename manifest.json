@@ -3,7 +3,8 @@
   "version": "1.0",
   "manifest_version": 3,
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "src/js/background.js",
+    "type": "module"
   },
   "content_scripts": [
     {
@@ -12,14 +13,14 @@
       ],
       "all_frames": true,
       "css": ["style.css"],
-      "js": ["load_goSfu.js"]
+      "js": ["src/js/contentScripts/load_goSfu.js"]
     },
     {
       "matches": [
         "https://myschedule.erp.sfu.ca/*"
       ],
       "css": ["style.css"],
-      "js": ["load_mySchedule.js"]
+      "js": ["src/js/contentScripts/load_mySchedule.js"]
     }
   ],
   "web_accessible_resources": [
@@ -31,14 +32,18 @@
       ]
     }
   ],
-  "permissions": ["storage", "activeTab", "scripting"],
+  "permissions": [
+    "tabs",
+    "storage", 
+    "activeTab", 
+    "scripting"
+  ],
+  "host_permissions": ["https://www.ratemyprofessors.com/*"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "/images/sfu_rmp_logo16.png",
-      "32": "/images/sfu_rmp_logo32.png",
-      "48": "/images/sfu_rmp_logo48.png",
-      "128": "/images/sfu_rmp_logo128.png"
+      "16": "/images/sfu_rmp_logo16_disabled.png",
+      "32": "/images/sfu_rmp_logo32_disabled.png"
     }
   },
   "icons": {
@@ -46,5 +51,8 @@
     "32": "/images/sfu_rmp_logo32.png",
     "48": "/images/sfu_rmp_logo48.png",
     "128": "/images/sfu_rmp_logo128.png"
+  },
+  "sandbox": {
+    "pages": ["sandbox.html"]
   }
 }

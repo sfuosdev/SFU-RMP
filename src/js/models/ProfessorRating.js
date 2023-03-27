@@ -1,4 +1,4 @@
-class ProfessorRating {
+export default class ProfessorRating {
 
     constructor(professorName, department, numOfRatings, avgQuality, difficulty, wouldLikeToTakeAgainRatio) {
         this.professorName = professorName;
@@ -29,9 +29,12 @@ class ProfessorRating {
         return this.difficulty;
     }
 
+    /**
+     * 
+     * @returns {Integer} number in range 0.0 - 1.0
+     * @returns {null} if data not present
+     */
     getWouldLikeToTakeAgainRatio() {
         return this.wouldLikeToTakeAgainRatio;
     }
 }
-
-export default ProfessorRating;

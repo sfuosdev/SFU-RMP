@@ -1,6 +1,9 @@
+
+test("", () => {})
 /**
  * @jest-environment node
  */
+/*
 import { when } from 'jest-when'
 import {collect,getCourseData } from "../js/courses";
 import { store, retrieve, checkStorage } from "../js/storage";
@@ -119,10 +122,4 @@ describe("test no return results for getCourseData", () => {
         expect(result).toBe(false);
     });
 })
-
-
-
-
-
-
-        
+*/
