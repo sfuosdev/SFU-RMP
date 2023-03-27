@@ -106,6 +106,7 @@ async function drawProfessorRatingOnClassSearchTab(tabWindow) {
         const courseNumber = courseInfo[2];
 
         const rowWrappers = sectionGroupBox.querySelectorAll(`[id^=trSSR_CLSRCH_MTG1]`);
+        let upperRowSectionCode;
         for (const rowWrapper of rowWrappers) {
             /**
              * Highlight Instructor Name
@@ -120,9 +121,17 @@ async function drawProfessorRatingOnClassSearchTab(tabWindow) {
              * Create Rating Bubble
              */
             const ratingBubble = createRatingBubbleElement();
-            const sectionCode = rowWrapper.querySelector(`[id^=MTG_CLASSNAME]`).querySelector("a").innerHTML.split("<br>")[0].split("-")[0];
+            const sectionTd = rowWrapper.querySelector(`[id^=MTG_CLASSNAME]`);
 
-            const professorRatings = await findProfessorRatingsByCourseSection(programName, courseNumber, sectionCode);
+            let professorRatings;
+            if(!sectionTd && upperRowSectionCode)
+                professorRatings = await findProfessorRatingsByCourseSection(programName, courseNumber, upperRowSectionCode);
+            else {
+                const sectionCode = sectionTd.querySelector("a").innerHTML.split("<br>")[0].split("-")[0];
+                upperRowSectionCode = sectionCode;
+                professorRatings = await findProfessorRatingsByCourseSection(programName, courseNumber, sectionCode);
+            }
+
             if (professorRatings.length > 0) {
                 drawProfessorRatingsInRatingBubble(ratingBubble, professorRatings);
                 instructorNameElement.appendChild(ratingBubble);
