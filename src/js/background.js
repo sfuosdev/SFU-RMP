@@ -37,13 +37,6 @@ function startInitialSetup() {
   openLoadingSandbox();
 }
 
-isInitialSetupRequired().then(flag => {
-  if(flag)
-    startInitialSetup();
-  else
-    markExtensionReadyToRun();
-});
-
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.type && request.type === "sandbox_message") {
     switch (request.key) {
@@ -77,4 +70,13 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         break;
     }
   }
+});
+
+chrome.runtime.onStartup.addListener(() => {
+  isInitialSetupRequired().then(flag => {
+    if(flag)
+      startInitialSetup();
+    else
+      markExtensionReadyToRun();
+  });
 });
