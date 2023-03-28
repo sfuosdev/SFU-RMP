@@ -8,6 +8,15 @@ async function isInitialSetupRequired() {
   return !condition;
 }
 
+function markExtensionReadyToRun() {
+  chrome.action.setIcon({
+    path: {
+      "16": "/images/sfu_rmp_logo16.png",
+      "32": "/images/sfu_rmp_logo32.png",
+    }
+  });
+}
+
 let loadingSandboxTab;
 function openLoadingSandbox() {
   if(!loadingSandboxTab)
@@ -22,15 +31,6 @@ function openLoadingSandbox() {
       // No loaindg page found, create a new one
       chrome.tabs.create({url: "../../loading.html"}, (tab) => loadingSandboxTab = tab);
     });
-}
-
-function markExtensionReadyToRun() {
-  chrome.action.setIcon({
-    path: {
-      "16": "/images/sfu_rmp_logo16.png",
-      "32": "/images/sfu_rmp_logo32.png",
-    }
-  });
 }
 
 function startInitialSetup() {

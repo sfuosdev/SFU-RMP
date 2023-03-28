@@ -17,7 +17,7 @@ export function drawProfessorRatingsInRatingBubble(ratingBubbleElement, professo
         header.innerHTML = rating.getProfessorName();
         avgQuality.innerHTML = `Avg Quality: ${rating.getAverageQuality() ? `<b>${rating.getAverageQuality().toFixed(1)}</b>/5` : "N/A"}`;
         difficulty.innerHTML = `Difficulty: ${rating.getDifficulty() ? `<b>${rating.getDifficulty().toFixed(1)}</b>/5` : "N/A"}`;
-        wouldTakeAgain.innerHTML = `WouldTakeAgain: ${rating.getWouldLikeToTakeAgainRatio() ? `<b>${rating.getWouldLikeToTakeAgainRatio()*100}%</b>` : "N/A"}`;
+        wouldTakeAgain.innerHTML = `WouldTakeAgain: ${rating.getWouldLikeToTakeAgainRatio() ? `<b>${parseFloat(rating.getWouldLikeToTakeAgainRatio()*100).toFixed(0)}%</b>` : "N/A"}`;
     
         itemWrapper.appendChild(header);
         itemWrapper.appendChild(document.createElement("hr"));
