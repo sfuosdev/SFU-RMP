@@ -13,9 +13,8 @@ The extension will show the professor rating in a tooltip on every professor nam
 The extension runs updates for every new semester automatically.  
 
 <div align="center">
-  <img src="./images/screenshot1.png" width="400" height="300">
-  <img src="./images/screenshot2.png" width="400" height="300">
-  <img src="./images/screenshot3.png">
+  <img src="./images/screenshot1.png" width="480" height="320">
+  <img src="./images/screenshot2.png" width="480" height="320">
 </div>
 
 ## Running in Development Mode    
