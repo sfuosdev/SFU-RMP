@@ -4,7 +4,7 @@
 </div>
 <br/>
 
-Chrome extension for SFU students to easily access prof rating info from RateMyProfessor on SFU course registration pages (goSFU, mySchedule). 
+Chrome extension for SFU students to easily access prof rating from RateMyProfessor.com on SFU course registration pages (goSFU, mySchedule). 
 
 After you install the extension, it will create a loading tab to collect SFU course offerings and RMP rating info for the current semester. This job may take a few minutes depending on your network availablity. Please do not close the window until the processing completes.  
 
