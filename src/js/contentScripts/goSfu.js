@@ -1,28 +1,5 @@
 import { findProfessorRatingsByCourseSection } from "../web/rateMyProfessor.js";
-import { colorInstructorName, containsRmpWrapper, createRatingBubbleElement, drawProfessorRatingsInRatingBubble } from "./commonElements.js";
-
-function hoverTooltipOverInstructorNames(node) {
-    const instructorNames = node.querySelectorAll(`[id^=win0divMTG_INSTR], [id^=win0divDERIVED_REGFRM1_SSR_INSTR_LONG] > span`);
-
-    instructorNames.forEach(element => {
-        let instructorSpan = node.createElement("span");
-        instructorSpan.className = "instructor";
-        instructorSpan.innerText = element.innerText;
-
-        let boxSpan = node.createElement("span");
-        boxSpan.className = "box";
-        boxSpan.innerText = "RMP Data";
-
-        if(!element.querySelector("span.instructor")){
-            element.innerText = '';
-            element.appendChild(instructorSpan);
-        }
-
-        if(!instructorSpan.querySelector("span.box"))
-        {instructorSpan.appendChild(boxSpan);}
-    });
-    
-}
+import { colorInstructorName, containsRmpWrapper, createTooltip, drawProfessorRatingsInTooltip } from "./commonElements.js";
 
 async function drawProfessorRatingsOnEnrollTab(tabWindow) {
     const body = tabWindow.querySelector("#SSR_SSENRL_CART");
@@ -47,7 +24,7 @@ async function drawProfessorRatingsOnEnrollTab(tabWindow) {
             /**
              * Create Rating Bubble
              */
-            const ratingBubble = createRatingBubbleElement();
+            const tooltip = createTooltip();
     
             const className = rowWrapper.querySelector(`[id^=P_CLASS_NAME]`).querySelector("a").innerHTML.split("<br>")[0];
             const programName = className.split(" ")[0];
@@ -56,8 +33,8 @@ async function drawProfessorRatingsOnEnrollTab(tabWindow) {
             
             const professorRatings = await findProfessorRatingsByCourseSection(programName, courseNumber, sectionName);
             if (professorRatings.length > 0) {
-                drawProfessorRatingsInRatingBubble(ratingBubble, professorRatings);
-                instructorNameElement.appendChild(ratingBubble);
+                drawProfessorRatingsInTooltip(tooltip, professorRatings);
+                instructorNameElement.appendChild(tooltip);
             }
         }
     }
@@ -77,7 +54,7 @@ async function drawProfessorRatingsOnEnrollTab(tabWindow) {
             /**
              * Create Rating Bubble
              */
-            const ratingBubble = createRatingBubbleElement();
+            const tooltip = createTooltip();
 
             const className = rowWrapper.querySelector(`[id^=E_CLASS_NAME]`).querySelector("a").innerHTML.split("<br>")[0];
             const programName = className.split(" ")[0];
@@ -86,8 +63,8 @@ async function drawProfessorRatingsOnEnrollTab(tabWindow) {
             
             const professorRatings = await findProfessorRatingsByCourseSection(programName, courseNumber, sectionCode);
             if (professorRatings.length > 0) {
-                drawProfessorRatingsInRatingBubble(ratingBubble, professorRatings);
-                instructorNameElement.appendChild(ratingBubble);
+                drawProfessorRatingsInTooltip(tooltip, professorRatings);
+                instructorNameElement.appendChild(tooltip);
             }
         }
     }
@@ -120,7 +97,7 @@ async function drawProfessorRatingOnClassSearchTab(tabWindow) {
             /**
              * Create Rating Bubble
              */
-            const ratingBubble = createRatingBubbleElement();
+            const tooltip = createTooltip();
             const sectionTd = rowWrapper.querySelector(`[id^=MTG_CLASSNAME]`);
 
             let professorRatings;
@@ -133,8 +110,8 @@ async function drawProfessorRatingOnClassSearchTab(tabWindow) {
             }
 
             if (professorRatings.length > 0) {
-                drawProfessorRatingsInRatingBubble(ratingBubble, professorRatings);
-                instructorNameElement.appendChild(ratingBubble);
+                drawProfessorRatingsInTooltip(tooltip, professorRatings);
+                instructorNameElement.appendChild(tooltip);
             }
         }
     }

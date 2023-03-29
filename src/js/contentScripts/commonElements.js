@@ -1,10 +1,10 @@
-export function createRatingBubbleElement() {
-    const ratingBubbleElement = document.createElement("span");
-    ratingBubbleElement.classList.add("rating_box_wrapper");
-    return ratingBubbleElement;
+export function createTooltip() {
+    const tooltipEle = document.createElement("span");
+    tooltipEle.classList.add("rating_box_wrapper");
+    return tooltipEle;
 }
 
-export function drawProfessorRatingsInRatingBubble(ratingBubbleElement, professorRatings) {
+export function drawProfessorRatingsInTooltip(tooltipEle, professorRatings) {
     professorRatings.forEach(rating => {
         const itemWrapper = document.createElement("div");
         itemWrapper.classList.add("rating_item_wrapper");
@@ -24,7 +24,7 @@ export function drawProfessorRatingsInRatingBubble(ratingBubbleElement, professo
         itemWrapper.appendChild(avgQuality);
         itemWrapper.appendChild(difficulty);
         itemWrapper.appendChild(wouldTakeAgain);
-        ratingBubbleElement.prepend(itemWrapper);
+        tooltipEle.prepend(itemWrapper);
     });
 }
 

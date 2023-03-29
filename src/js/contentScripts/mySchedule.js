@@ -1,5 +1,5 @@
 import { findProfessorRatingsByCourseSection } from "../web/rateMyProfessor.js";
-import { colorInstructorName, containsRmpWrapper, createRatingBubbleElement, drawProfessorRatingsInRatingBubble } from "./commonElements.js";
+import { colorInstructorName, containsRmpWrapper, createTooltip, drawProfessorRatingsInTooltip } from "./commonElements.js";
 
 async function drawProfessorRatings(){
     const courseWrappers = document.querySelectorAll(".course_box");
@@ -20,7 +20,7 @@ async function drawProfessorRatings(){
             /**
              * Create Rating Bubble
              */
-            const ratingBubble = createRatingBubbleElement();
+            const tooltip = createTooltip();
     
             const sectionElement = selectionWrapper.querySelector('strong.leftnclear');
             const programName = courseTitleElement.innerHTML.split(" ")[0];
@@ -29,8 +29,8 @@ async function drawProfessorRatings(){
             
             const professorRatings = await findProfessorRatingsByCourseSection(programName, courseNumber, sectionName);
             if (professorRatings.length > 0) {
-                drawProfessorRatingsInRatingBubble(ratingBubble, professorRatings);
-                instructorNameElement.appendChild(ratingBubble);
+                drawProfessorRatingsInTooltip(tooltip, professorRatings);
+                instructorNameElement.appendChild(tooltip);
             }
         }
     }

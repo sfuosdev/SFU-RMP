@@ -33,8 +33,13 @@ function openLoadingSandbox() {
     });
 }
 
-function startInitialSetup() {
-  openLoadingSandbox();
+function startExtension() {
+  isInitialSetupRequired().then(flag => {
+    if(flag)
+      openLoadingSandbox();
+    else
+      markExtensionReadyToRun();
+  });
 }
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
@@ -72,11 +77,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   }
 });
 
-chrome.runtime.onStartup.addListener(() => {
-  isInitialSetupRequired().then(flag => {
-    if(flag)
-      startInitialSetup();
-    else
-      markExtensionReadyToRun();
-  });
-});
+chrome.runtime.onInstalled.addListener(() => startExtension());
+
+chrome.runtime.onStartup.addListener(() => startExtension());
