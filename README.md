@@ -4,7 +4,9 @@
 </div>
 <br />
 <div align="center">
-  <img src="https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/iNEddTyWiMfLSwFD6qGq.png">
+  <a href="https://chrome.google.com/webstore/detail/sfu-ratemyprofessor-exten/jblfjeooajgbckndgbjbimmknggeibjn?hl=ko&authuser=0">
+      <img src="https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/iNEddTyWiMfLSwFD6qGq.png">
+  </a>
 </div>
 <br />
 
