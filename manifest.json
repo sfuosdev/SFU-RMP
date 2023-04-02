@@ -1,6 +1,6 @@
 {
   "name": "SFU RateMyProfessor Extension",
-  "version": "1.0",
+  "version": "1.0.2",
   "manifest_version": 3,
   "background": {
     "service_worker": "src/js/background.js",
