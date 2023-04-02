@@ -8,7 +8,7 @@ Chrome extension for SFU students to easily access prof rating from RateMyProfes
 
 First, the extension will create a loading page for collecting SFU course offerings and RMP rating info. This job may take a few minutes depending on your network availablity. Please do not close the window until the processing completes.  
 
-After then, it will start to show professor rating in a tooltip on every professor name on goSFU and mySchedule. Hover your mouse on the highlighted professor names, then you'll see the abbreviated RMP rating info.  
+After then, it will start to show professor rating in a tooltip on every professor name on goSFU and mySchedule. Hover your mouse on the highlighted professor names, then you'll find the abbreviated RMP rating info.  
 
 The extension runs updates for every new semester automatically.  
 
