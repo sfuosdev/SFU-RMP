@@ -1,8 +1,12 @@
 <div id="header" align="center">
-  <h2>SFU Chrome Extension</h2>
-  <img src="./images/sfu_rmp_logo.png" width="400" height="400">
+  <h1>SFU RateMyProfessor</h1>
+  <img src="./images/sfu_rmp_logo.png" width="300" height="300">
 </div>
-<br/>
+<br />
+<div align="center">
+  <img src="https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/iNEddTyWiMfLSwFD6qGq.png">
+</div>
+<br />
 
 Chrome extension for SFU students to easily access prof rating from RateMyProfessor.com on SFU course registration pages (goSFU, mySchedule). 
 
@@ -16,6 +20,7 @@ The extension runs updates for every new semester automatically.
   <img src="./images/screenshot1.png" width="400" height="280">
   <img src="./images/screenshot2.png" width="400" height="280">
 </div>
+
 
 ## Running in Development Mode    
 1. Clone or download the repository.  
@@ -32,4 +37,5 @@ The extension runs updates for every new semester automatically.
   
 1. `npm install` to install dev dependencies  
 2. `npm test` to run all test suites  
+
 
